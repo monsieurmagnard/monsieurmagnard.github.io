@@ -143,6 +143,7 @@ function ecrireNomDeNote(canvas, nomDeNote, posXNom) {
 
 function marquer(canvas, marque) {
 	var context = canvas.getContext('2d');
+	context.clearRect(0, 370, canvas.width, canvas.height); 
 	context.font = '11pt Calibri';
 	context.fillStyle = 'grey';
 	context.fillText(marque, 10, 380); // 180204
@@ -181,7 +182,7 @@ function cliquerSur(evt){ // 170801 Paris d'après 160531: modèle: mousemove
 	var positionPointeur = positionnerPointeur(canvas, evt);
 	activerZone (positionPointeur.x, positionPointeur.y);
     var message = 'Position du pointeur: ' + positionPointeur.x + ',' + positionPointeur.y + ' zone0: ' + zone[0]; 
-	ecrireMessage(canvas, message);
+	//ecrireMessage(canvas, message); // réformé pour publication 180206
 	dessinerInitial();
 	
 	if (positionPointeur.y > 70 && positionPointeur.y < 195){ // Partie sup du clavier.
@@ -192,23 +193,23 @@ function cliquerSur(evt){ // 170801 Paris d'après 160531: modèle: mousemove
 				if (positionPointeur.x > 60 + posXToutesTouches [i] && positionPointeur.x < 60 + posXToutesTouches [i+1]){
 					sonsClavier[i].play();
 					if ((i % 12 < 5 && i % 2 == 0) || (i % 12 >= 5 && i % 2 == 1)) { // 170929: définition des touches blanches
-							dessinerTouche(32, 200, 33*noToucheBlanche,"lightgrey", "black");
+							dessinerTouche(32, 200, 33*noToucheBlanche,"gray", "black");
 							dessinerTouchesNoires(); 
 							for (var j = 0; j < nbreTouchesNoires ; j++){
-								if (toucheNoireSelect [j] == true) dessinerTouche(14, 125, posXTouchesNoires [j],"lightgrey", "black");
+								if (toucheNoireSelect [j] == true) dessinerTouche(14, 125, posXTouchesNoires [j],"gray", "black");
 							} // for j
 					} else if ((i % 12 < 5 && i % 2 == 1) || (i % 12 >= 5 && i % 2 == 0)) {
-						dessinerTouche(14, 125, posXToutesTouches [i],"lightgrey", "black"); // if i %
+						dessinerTouche(14, 125, posXToutesTouches [i],"gray", "black"); // if i %
 						toucheNoireSelect[noToucheNoire] = true;
 					}
 				} // if positionPointeur.x
 			} // for i
 			if (positionPointeur.x > 428 && positionPointeur.x < 452){ // sol aigu i == nTB - 1
 				sonsClavier[19].play();
-				dessinerTouche(32, 200, 33*11,"lightgrey", "black");
+				dessinerTouche(32, 200, 33*11,"gray", "black");
 				// dessinerTouchesNoires(); 
 				// for (var k = 0; k < nbreTouchesNoires ; k++){
-				if (toucheNoireSelect [7] == true) dessinerTouche(14, 125, 353,"lightgrey", "black");
+				if (toucheNoireSelect [7] == true) dessinerTouche(14, 125, 353,"gray", "black");
 				else dessinerTouche(14, 125, 353,"black", "black");
 				// } // for k
 			 } // if i < nT - 1
@@ -218,10 +219,10 @@ function cliquerSur(evt){ // 170801 Paris d'après 160531: modèle: mousemove
 		for (var k = 0; k < nbreTouchesBlanches; k++){
 			if(positionPointeur.x > 60 + 33*k  &&  positionPointeur.x < 92 + 33*k){
 				sonsTouchesBlanches[k].play(); // 171010
-				dessinerTouche(32, 200, 33*k,"lightgrey", "black");
+				dessinerTouche(32, 200, 33*k,"gray", "black");
 				dessinerTouchesNoires(); // 171010: pour le moment on laisse comme ça, sinon, quand autres fonctions rédigées on traitera les touches noires encore résonnantes
 				for (var n = 0; n < nbreTouchesNoires ; n++){
-					if (toucheNoireSelect [n] == true) dessinerTouche(14, 125, posXTouchesNoires [n],"lightgrey", "black");
+					if (toucheNoireSelect [n] == true) dessinerTouche(14, 125, posXTouchesNoires [n],"gray", "black");
 				} // for n
 			} // if posPt.x
 		} // for k
@@ -247,7 +248,7 @@ function releverClic(evt){ // 170809 St Clément de Rivière d'après 160531: mo
 			dessinerTouche(32, 200, 33*i,"white", "black");
 			dessinerTouchesNoires();
 			for (var n = 0; n < nbreTouchesNoires ; n++){ // 171011
-					if (toucheNoireSelect [n] == true) dessinerTouche(14, 125, posXTouchesNoires [n],"lightgrey", "black");
+					if (toucheNoireSelect [n] == true) dessinerTouche(14, 125, posXTouchesNoires [n],"gray", "black");
 				} // for n
 			//dessinerInitial();
 		//selectionne = false;
@@ -270,7 +271,7 @@ function releverClic(evt){ // 170809 St Clément de Rivière d'après 160531: mo
 							dessinerTouche(32, 200, 33*noToucheBlanche,"white", "black");
 							dessinerTouchesNoires(); 
 							for (var k = 0; k < nbreTouchesNoires ; k++){
-								if (toucheNoireSelect [k] == true) dessinerTouche(14, 125, posXTouchesNoires [k],"lightgrey", "black");
+								if (toucheNoireSelect [k] == true) dessinerTouche(14, 125, posXTouchesNoires [k],"gray", "black");
 							} // for k
 					} else if ((j % 12 < 5 && j % 2 == 1) || (j % 12 >= 5 && j % 2 == 0)) { // définition touche noire
 						dessinerTouche(14, 125, posXToutesTouches [j],"black", "black"); // if j %
@@ -284,7 +285,7 @@ function releverClic(evt){ // 170809 St Clément de Rivière d'après 160531: mo
 				dessinerTouche(32, 200, 33*11,"white", "black");
 				// dessinerTouchesNoires(); 
 				// for (var k = 0; k < nbreTouchesNoires ; k++){
-				if (toucheNoireSelect [7] == true) dessinerTouche(14, 125, 353,"lightgrey", "black");
+				if (toucheNoireSelect [7] == true) dessinerTouche(14, 125, 353,"gray", "black");
 				else dessinerTouche(14, 125, 353,"black", "black");
 				// } // for k
 			 } // sol aigu
@@ -302,10 +303,10 @@ function appuyer(e){
 		if (e.keyCode == codeTouchesBlanches[i]) {
 		//var T_C2 = document.querySelector('#P_C2');
 			sonsTouchesBlanches[i].play();
-			dessinerTouche(32, 200, 33*i,"lightgrey", "black"); // 170908 d'après 170825
+			dessinerTouche(32, 200, 33*i,"gray", "black"); // 170908 d'après 170825
 			dessinerTouchesNoires();
 			for (var k = 0; k < nbreTouchesNoires ; k++){
-				if (toucheNoireSelect [k] == true) dessinerTouche(14, 125, posXTouchesNoires [k],"lightgrey", "black");
+				if (toucheNoireSelect [k] == true) dessinerTouche(14, 125, posXTouchesNoires [k],"gray", "black");
 			} // for k
 		//selectionne = true;
 		//clearCanvas();
@@ -317,9 +318,9 @@ function appuyer(e){
 		if (e.keyCode == codeTouchesNoires[j]) {
 			sonsTouchesNoires[j].play();
 			
-			dessinerTouche(14, 125, posXTouchesNoires [j],"lightgrey", "black");  // 170908 d'après 170825
+			dessinerTouche(14, 125, posXTouchesNoires [j],"gray", "black");  // 170908 d'après 170825
 			toucheNoireSelect [j] = true;
-			if (toucheNoireSelect [j] == true) dessinerTouche(14, 125, posXTouchesNoires [j],"lightgrey", "black");
+			if (toucheNoireSelect [j] == true) dessinerTouche(14, 125, posXTouchesNoires [j],"gray", "black");
 		}
 	}
 }
@@ -339,7 +340,7 @@ function relever(e){
 			dessinerTouche(32, 200, 33*i,"white", "black"); // 170825
 			dessinerTouchesNoires();
 			for (var k = 0; k < nbreTouchesNoires ; k++){
-				if (toucheNoireSelect [k] == true) dessinerTouche(14, 125, posXTouchesNoires [k],"lightgrey", "black");
+				if (toucheNoireSelect [k] == true) dessinerTouche(14, 125, posXTouchesNoires [k],"gray", "black");
 			} // for k
 		}
 	}
