@@ -192,6 +192,7 @@ function cliquerSur(evt){ // 170801 Paris d'après 160531: modèle: mousemove
 			//if ( i < nbreTouches - 1){
 				if (positionPointeur.x > 60 + posXToutesTouches [i] && positionPointeur.x < 60 + posXToutesTouches [i+1]){
 					sonsClavier[i].play();
+					if (i == 10) sonsClavier[10].play(); // 180207: contrefort Github refus de jouer si b
 					if ((i % 12 < 5 && i % 2 == 0) || (i % 12 >= 5 && i % 2 == 1)) { // 170929: définition des touches blanches
 							dessinerTouche(32, 200, 33*noToucheBlanche,"gray", "black");
 							dessinerTouchesNoires(); 
