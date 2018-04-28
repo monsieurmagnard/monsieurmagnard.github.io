@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang = "fr">
 <head>
@@ -97,4 +98,105 @@
     
 	<script src = "Gouvernement_Piano/ordonnateurClavier_1.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang = "fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Clavier_1</title>
+    <!--link rel = "stylesheet" href = "majordome_1.css"-->
+</head>
+<body>
+    <!--div id = "conteneurLabels" class = "conteneurs">
+        <button id = "boutonDemAr" class = "bouton" onclick = "demarArrete();">Démarrer</button>
+    </div-->
+	
+	<canvas id="canvas"  width="500" height="400" style="background-color:#f5f5f5" tabindex = "0">
+		<p>Désolé, votre navigateur ne supporte pas Canvas.</p>
+	</canvas>
+	
+	<audio id = "P_C2">
+		<source src = "Sons_Piano/PianoS1sA_C2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_C2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Cd2">
+		<source src = "Sons_Piano/PianoS1sA_Cd2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Cd2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_D2">
+		<source src = "Sons_Piano/PianoS1sA_D2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_D2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Dd2">
+		<source src = "Sons_Piano/PianoS1sA_Dd2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Dd2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_E2">
+		<source src = "Sons_Piano/PianoS1sA_E2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_E2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_F2">
+		<source src = "Sons_Piano/PianoS1sA_F2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_F2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Fd2">
+		<source src = "Sons_Piano/PianoS1sA_Fd2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Fd2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_G2">
+		<source src = "Sons_Piano/PianoS1sA_G2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_G2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Gd2">
+		<source src = "Sons_Piano/PianoS1sA_Gd2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Gd2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_A2">
+		<source src = "Sons_Piano/PianoS1sA_A2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_A2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Ad2">
+		<source src = "Sons_Piano/PianoS1sA_Ad2_c.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Ad2_c.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_B2">
+		<source src = "Sons_Piano/PianoS1sA_B2.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_B2.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_C3">
+		<source src = "Sons_Piano/PianoS1sA_C3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_C3.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Cd3">
+		<source src = "Sons_Piano/PianoS1sA_Cd3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Cd3.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_D3">
+		<source src = "Sons_Piano/PianoS1sA_D3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_D3.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Dd3">
+		<source src = "Sons_Piano/PianoS1sA_Dd3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Dd3.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_E3">
+		<source src = "Sons_Piano/PianoS1sA_E3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_E3.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_F3">
+		<source src = "Sons_Piano/PianoS1sA_F3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_F3.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_Fd3">
+		<source src = "Sons_Piano/PianoS1sA_Fd3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_Fd3.ogg" type = "audio/ogg">
+	</audio>
+	<audio id = "P_G3">
+		<source src = "Sons_Piano/PianoS1sA_G3.mp3" type = "audio/mpeg">
+		<source src = "Sons_Piano/PianoS1sA_G3.ogg" type = "audio/ogg">
+	</audio>
+    
+	<script src = "Gouvernement_Piano/ordonnateurClavier_1.js"></script>
+</body>
+>>>>>>> 2420effec398d0fb076b75bfd95b292130d97f48
 </html>

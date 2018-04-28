@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .conteneurs
 {
     display: flex;
@@ -190,3 +191,197 @@ span.bordGauche
 	margin-top: 0px;
 	
 }
+=======
+.conteneurs
+{
+    display: flex;
+	background-color: #fbf8d7;
+	width: 565px;
+}
+
+.conteneursInt
+{
+    display: flex;
+}
+
+.labels
+{
+	color:darkcyan;
+	font-family: Calibri;
+	font-size: 0.8em;
+	margin-left: 3px;
+	margin-top: 24px;
+}
+
+.labelsBoucle
+{
+	color:darkcyan;
+	font-family: Calibri;
+	font-size: 0.8em;
+	margin-left: 5px;
+	margin-top: 24px;
+}
+
+.labelsCasesAC
+{
+	color:darkcyan;
+	font-family: Calibri;
+	font-size: 0.8em;
+	/*margin-left: 5px;*/
+	margin-top: 2px;
+	margin-bottom: 10px;
+}
+
+.saisies
+{
+	text-align:center; 
+	border:solid 0.5px grey; 
+	border-radius:5px;
+	background-color: honeydew; /*170115 essai changement de couleur ancmt lightyellow*/
+	font-style: Arial;
+	color: blue;
+	font-weight: bold;
+	margin-bottom: 10px;
+	width:35px; 
+	margin-left: 13px;
+}
+
+.saisiesBoucle
+{
+	text-align:center; 
+	border:solid 0.5px grey; 
+	border-radius:5px;
+	background-color: honeydew;
+	font-style: Arial;
+	color: blue;
+	font-weight: bold;
+	margin-bottom: 10px;
+	width:35px; 
+	margin-left: 18px;
+}
+
+#boutonDemAr
+{
+	width: 80px;
+	margin-left: 25px;
+	margin-top: 18px;
+	margin-bottom: 5px; /* 160925: Attention, gouverne à lui seul l'écart vertical entre Labels et Saisies*/
+	color:darkcyan;
+}
+
+#Tempo
+{
+	margin-left: 26px;
+	margin-top: 20px;
+	font-size: 1em;
+}
+
+#LabelDivisions
+{
+	margin-left: 25px;
+}
+
+#LabelsBoucle
+{
+	margin-left: 10px;
+}
+
+
+/* ***** CHAMPS DE SAISIES ***** 160924*/ 
+
+#champTempo
+{
+	text-align:center; 
+	border:solid 0.5px grey; 
+	border-radius:5px;
+	background-color: honeydew;
+	font-style: Arial;
+	color: blue;
+	font-weight: bold;
+	margin-bottom: 10px;
+	width:45px;
+	margin-left: 130px;
+}
+
+#SaisieDivisions
+{
+	margin-left: 19px;
+}
+
+#SaisiesBoucle
+{
+	margin-left: 21px;
+}
+
+/* ***** CASES A COCHER ***** 160928*/
+
+#Decompte
+{
+	margin-left: 130px;
+}
+
+#decompte
+{
+	margin-left: 10px;
+}
+
+#Metronome
+{
+	margin-left: 140px;
+}
+
+#metronome
+{
+	margin-left: 10px;
+}
+
+/* ***** CANVAS ***** 160930*/
+#canvas
+{
+	/*margin-left: 30px;
+	margin-top: 20px;
+	position: relative; 
+	z-index: 1;*/
+}
+
+/* ***** DEROULEUR HORIZONTAL ***** 160929*/
+
+#horiz
+{
+	margin-left: 100px;
+	width: 415px;
+	/*background-color: #fbf8d7;*/
+}
+
+/* ***** SORTIES ***** 160929*/
+
+/*#demo
+{
+	margin-left: 30px;
+}*/
+
+span.sortieH
+{
+	margin-left: 20px
+}
+
+span.bordGauche
+{
+	margin-left: 30px
+}
+
+/*#demo_9
+{
+	margin-left: 30px;
+}*/
+
+#signature /* 180218*/
+{
+	color:gray;
+	font-family: Calibri;
+	font-size: 0.8em;
+	margin-left: 390px;
+	margin-top: 0px;
+	
+}
+>>>>>>> 2420effec398d0fb076b75bfd95b292130d97f48
