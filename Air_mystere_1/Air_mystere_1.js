@@ -29,7 +29,8 @@ function demar_arret(){
 		document.getElementById("bouton_demarre").innerHTML = "Jouer";
 		marche = false;
 		instantPause = recuperer_instant_pause();
-		document.getElementById("instant_pause").innerHTML = 'instant pause: ' + instantPause;
+		momentPause = instantPause - instantDepart;
+		document.getElementById("instant_pause").innerHTML = 'moment pause (s): ' + momentPause/1000;
 	}
 	document.getElementById("etat").innerHTML = "marche: " + marche;
 }
@@ -51,9 +52,10 @@ function remettre_a_zero(){
 function fixer_instant_du_depart(){
 	
 	var depart = new Date();
+	var heure_dep = depart.getHours();
 	var seconde_dep = depart.getSeconds();
 	var milliseconde_dep = depart.getMilliseconds();
-	instant_depart = 1000*seconde_dep + milliseconde_dep;
+	instant_depart = 3600000*heure_dep +1000*seconde_dep + milliseconde_dep;
 		
 	return instant_depart;
 }
@@ -61,9 +63,10 @@ function fixer_instant_du_depart(){
 function recuperer_instant_pause(){
 	
 	var pause = new Date();
+	var heure_pause = pause.getHours();
 	var seconde_pause = pause.getSeconds();
 	var milliseconde_pause = pause.getMilliseconds();
-	instant_pause = 1000*seconde_pause + milliseconde_pause;
+	instant_pause = 3600000*heure_pause + 1000*seconde_pause + milliseconde_pause;
 		
 	return instant_pause;
 }
@@ -115,7 +118,7 @@ window.addEventListener('load', function() {
 	  
 	  canvas.addEventListener('click', function(evt) { // 160531: modèle: mousemove
         var mousePos = getMousePos(canvas, evt);
-        var message_position = 'position pointeur (px): ' + mousePos.x;
+        var message_position = 'position pointeur (px): ' + Math.floor(mousePos.x);
 		var temps_video;
 		
 		for (var i = 0; i < 12; i++){
@@ -123,12 +126,15 @@ window.addEventListener('load', function() {
 				temps_video = calculer_temps_video(to_tab[i], to_tab[i+1], poso_tab[i], poso_tab[i+1], mousePos.x); // 200508
 			}
 		}
-		var message_temps_video = 'temps video (s): ' + temps_video;
+		var apreslavirgule = Math.floor((temps_video - Math.floor(temps_video))*1000);
+		//document.getElementById("video_timer").innerHTML = 'video (s): ' + Math.floor(tx) + ',' + apresvirgule ;
+		var message_temps_video = 'temps video (s): ' + Math.floor(temps_video) + ',' + apreslavirgule;
 		
 		document.getElementById("pointeur_position").innerHTML = message_position + ' ; ' + message_temps_video;
 
 		video.currentTime = temps_video;
 		repositionne = true;
+		zerodemande = false;
 		repositioX = mousePos.x;
 
 	  }, false); // fin fonction click sélection (à ne pas oublier!: 200504)
@@ -153,6 +159,7 @@ window.addEventListener('load', function() {
 			var tx = video.currentTime;
 			var apresvirgule = Math.floor((tx - Math.floor(tx))*1000);
 			document.getElementById("video_timer").innerHTML = 'video (s): ' + Math.floor(tx) + ',' + apresvirgule ;
+			document.getElementById("etat").innerHTML = "marche: " + marche;
 			
 			/*if (posX < 148 && video.currentTime < 3) posX = 120 + (14 * video.currentTime ); // 200506 en substitution de 200504: durée moyenne frame (rafraichisement canvas) un peu sup à 17 ms (chrome) cf. moyenne dans bloc program
 										  // => longueur frame (posX +=) = distance interrepères x durée frame (~17 ms)/ durée interrepères.
@@ -179,9 +186,10 @@ window.addEventListener('load', function() {
 			//document.write(posX);
 			
 			var date = new Date();
+			var heures = date.getHours();
 			var millisecondes = date.getMilliseconds();
 			var secondes = date.getSeconds();
-			var instant = millisecondes + (1000 * secondes);
+			var instant = millisecondes + (1000 * secondes) + (3600000 * heures);
 			//var instantDepart = fixer_instant_du_depart();
 			var temps = instant - instantDepart; 
 		
@@ -201,10 +209,15 @@ window.addEventListener('load', function() {
 		
 		else {
 			video.pause(); // 2001202
+			document.getElementById("etat").innerHTML = "marche: " + marche;
 			//posX = 120;
 		}
 		
-		if 	(zerodemande == true) posX = 120;
+		if (zerodemande == true) {
+			posX = 120;
+			document.getElementById("etat").innerHTML = "marche: " + marche;
+		}
+		
 		if (repositionne == true) {
 			posX = repositioX;
 			repositionne = false;
