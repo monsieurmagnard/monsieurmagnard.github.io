@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Gamme de do majeur harmonisée en accords à 3 sons dans leur état fondamental</title>
+  <!--<link rel="stylesheet" href="style.css">-->
+  <style>
+	.affiche_messages {
+		display: flex;
+	}
+	.affiche_messages > div {
+		padding-left: 20px;
+	}
+	
+	.boutons {
+		padding-left: 20px;
+	}
+	
+	.controle_bt {
+		display: inline-block;
+	}
+	.button1 {width: 55px; padding: 3px;}
+	.button2 {width: 55px; padding: 3px;}
+  </style>
+  
+</head>
+	
+<body>
+	
+  <!--...-->
+  <!-- Le reste du contenu -->
+  
+	<canvas id="canvas"  width="1130" height="220">
+
+		<p>Désolé, votre navigateur ne supporte pas Canvas. Mettez-vous à jour</p>
+
+	</canvas>
+	<div class="boutons">
+		<button id="bouton_demarre" class = "controle_bt button1" onclick = "demar_arret()">Jouer</button>
+		<button id="bouton_azero" class = "controle_bt button2" onclick = "remettre_a_zero()">Stop</button>
+	</div>
+	
+	<video id="videoplayer_1" style= "padding-left: 200px;" width="500" ontimeupdate="update(this)" controls>
+  
+		<source src="Gamme_DoM_harmonisee_Acc_3_sons_fonda_docs/Gamme_harmo_Acc_3_sons_fonda.mp4" type="video/mp4">
+			<!--<source src="mov_bbb.ogg" type="video/ogg">-->
+			Your browser does not support HTML5 video.
+	</video>
+	
+	<div id = "messages_statiques" class = "affiche_messages">
+		<div id="etat"> marche ? </div>
+		<div id="initialisation"> remise à zéro ? </div>
+		<div id="pointeur_position">position pointeur </div>
+		<!--<div id="instant_depart">instant du départ </div>-->
+		<div id="instant_pause"> moment pause </div>
+	</div>
+	<div id = "messages" class = "affiche_messages">
+		<div id="curseur_position"> position curseur </div>
+	</div>
+	<div id="video_timer" class = "affiche_messages" style = "padding-left: 20px"> video-timer </div>
+	<div id="signature" class = "affiche_messages" style = "padding-left: 20px"> © monsieur magnard 2020 </div>
+	
+	
+	
+	<img src="Gamme_DoM_harmonisee_Acc_3_sons_fonda_docs/Gamme_harmonisee_3_sons.png" id = "partition" style="display:none;" alt="partition" width="1104" height="194">
+	
+	<script src="Gamme_DoM_harmonisee_Acc_3_sons_fonda.js"></script>
+  <!--...-->
+</body>
+</html>
