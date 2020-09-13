@@ -17,7 +17,9 @@
 function showCoordinates(event) {
   var x_0 = event.touches[0].clientX;
   var y_0 = event.touches[0].clientY;
-  document.getElementById("demo").innerHTML = x_0 + ", " + y_0;
+  var x_1 = event.touches[1].clientX;
+  var y_1 = event.touches[1].clientY;
+  document.getElementById("demo").innerHTML = x_0 + ", " + y_0 + " et " + x_1 + ", " + y_1;
 }
 </script>
 
