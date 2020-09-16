@@ -13,7 +13,7 @@
 
 		<p><strong>Note:</strong> Touch events works for touch devices only.</p>
 
-		<canvas id="canvas" style="background-color:#f5f5f5">
+		<canvas id="canvas" width = "330" height= "600" style="background-color:#f5f5f5">
 			<p>Désolé, votre navigateur ne supporte pas Canvas.</p>
 		</canvas>
 
@@ -34,7 +34,7 @@
 			function cliquerSur(evt){ // 200915 adaptation smartphone d'après 170801 Paris d'après 160531: modèle: mousemove
 				var positionPointeur = positionnerPointeur(canvas, evt);
 				//activerZone (positionPointeur.x, positionPointeur.y);
-				var message = 'Position du pointeur: ' + positionPointeur.x + ',' + positionPointeur.y ; /*+ ' zone0: ' + zone[0]*/ 
+				var message = positionPointeur.x + ',' + positionPointeur.y ; /*+ ' zone0: ' + zone[0]*/ 
 			//ecrireMessage(canvas, message); // réformé pour publication 180206
 			document.getElementById("demo").innerHTML = message;//x_0 + ", " + y_0 + " et " + x_1 + ", " + y_1;
 			}
