@@ -1,0 +1,429 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="P_C2">
+      <source src = "Sons_Piano/PianoS1sA_C2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_Cd2">
+      <source src = "Sons_Piano/PianoS1sA_Cd2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_D2">
+      <source src = "Sons_Piano/PianoS1sA_D2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_Dd2">
+      <source src = "Sons_Piano/PianoS1sA_Dd2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_E2">
+      <source src = "Sons_Piano/PianoS1sA_E2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_F2">
+      <source src = "Sons_Piano/PianoS1sA_F2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_Fd2">
+      <source src = "Sons_Piano/PianoS1sA_Fd2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_G2">
+      <source src = "Sons_Piano/PianoS1sA_G2.ogg" type="audio/ogg">
+    </audio>
+      <audio id="P_Gd2">
+      <source src = "Sons_Piano/PianoS1sA_Gd2.ogg" type="audio/ogg">
+      </audio>
+    <audio id="P_A2">
+      <source src = "Sons_Piano/PianoS1sA_A2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_Ad2">
+      <source src = "Sons_Piano/PianoS1sA_Ad2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_B2">
+      <source src = "Sons_Piano/PianoS1sA_B2.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_C3">
+      <source src = "Sons_Piano/PianoS1sA_C3.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_Cd3">
+      <source src = "Sons_Piano/PianoS1sA_Cd3.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_D3">
+      <source src = "Sons_Piano/PianoS1sA_D3.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_Dd3">
+      <source src = "Sons_Piano/PianoS1sA_Dd3.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_E3">
+      <source src = "Sons_Piano/PianoS1sA_E3.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_F3">
+      <source src = "Sons_Piano/PianoS1sA_F3.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_Fd3">
+      <source src = "Sons_Piano/PianoS1sA_Fd3.ogg" type="audio/ogg">
+    </audio>
+    <audio id="P_G3">
+      <source src = "Sons_Piano/PianoS1sA_G3.ogg" type="audio/ogg">
+    </audio>
+    
+    <canvas id="monCanvas" width="300" height="550" style = "background-color:#ddddaa"></canvas>
+
+    
+    <script>
+      var nbreTouchesBlanches = 12;
+      var nbreTouchesNoires = 8;
+      var nbreToutesTouches = nbreTouchesBlanches + nbreTouchesNoires;
+      var n = 0;
+      var positionsTouches = [];
+      var tab_k = [];
+      var zone = []; // 200923, tranosférée en global, 201020
+      
+      for(var z=0; z < nbreToutesTouches; z++){
+        zone [z] = false;
+      }
+      
+      var LEcranX = screen.width;
+      var HEcranY = screen.height;
+      //document.getElementById('test_07').innerHTML = 'dims écran ut.: ' + LEcranX + ', ' + HEcranY;
+      
+      var nomsSons = ['#P_C2', '#P_Cd2','#P_D2','#P_Dd2','#P_E2','#P_F2','#P_Fd2','#P_G2','#P_Gd2','#P_A2','#P_Ad2','#P_B2','#P_C3','#P_Cd3','#P_D3','#P_Dd3','#P_E3','#P_F3','#P_Fd3','#P_G3'];
+      
+      var tabSons = [];
+      for (var i = 0; i < nbreToutesTouches; i++){
+        tabSons[i] = document.querySelector(nomsSons[i]);
+      }
+      //var limZones = [250, 500]; // 200924: définition zones de touches.
+      function afficherNbreTouches(nb){
+        document.getElementById("demo").innerHTML = 'Nbre de touches: '+ nb;
+      }
+      
+      function positionner(evt, posTouch, n){
+        for(var i= 0; i<n; i++){
+          posTouch[i] = [];
+          posTouch[i][0]= Math.ceil(evt.targetTouches[i].clientX);
+          posTouch[i][1]= Math.ceil(evt.targetTouches[i].clientY);
+        }
+        
+       // document.getElementById("demo_1").innerHTML = 'Tableau des positions: ' + posTouch;
+      }
+      
+      var canvas = document.getElementById('monCanvas');
+      var context = canvas.getContext('2d');
+    
+      canvas.width = LEcranX*0.99;
+      canvas.height = HEcranY*0.82;
+      
+      var hautCanvas = context.canvas.height;
+      var largCanvas = context.canvas.width;
+      
+     var largeurTouchesBlanches = Math.floor(hautCanvas*0.97/nbreTouchesBlanches);
+      var longueurTouchesBlanches = Math.floor(0.9*largCanvas);
+      var longueurTouchesNoires = Math.floor(9.7*longueurTouchesBlanches/14.6);
+      var largeurTouchesNoires = Math.floor(16*largeurTouchesBlanches/30);//Math.floor(5*largeurTouchesBlanches/12);
+      var largeurClavier = nbreTouchesBlanches * largeurTouchesBlanches;
+      var margeOuest = (0.98 * largCanvas) - longueurTouchesBlanches;
+      var margeNord = 0.02 * hautCanvas;
+ 
+      
+      var posTouchesBlanches = [];
+      for (var i= 0; i < nbreTouchesBlanches; i++){
+          posTouchesBlanches[i] = i*largeurTouchesBlanches + margeNord;
+        }
+      //var marque = 'largeur: ' + largCanvas + ', hauteur: ' + hautCanvas;
+      var marque = 'monsieurmagnard 2020';
+     // var marque = 'b';
+      //document.getElementById("canvasDim").innerHTML = 'Dim. canvas: ' + hautCanvas+ '/' + largCanvas+' | Dim T. Bl: ' + largeurTouchesBlanches+'/' +longueurTouchesBlanches;
+      
+      function marquer(canvas, marque) {
+        //var context = canvas.getContext('2d');
+        context.save();
+       // context.fillStyle = "white";
+       // context.fillRect(5, 400,20, 200);
+        context.font = '11pt Calibri';
+        context.fillStyle = 'grey';
+         // 201022: écriture verticale pour smartphones
+       context.rotate(0.5* Math.PI);
+        context.fillText(marque, 0.7 * hautCanvas, -0.3 * margeOuest); // 201030 d'après 180204
+      //context.fillText(marque, 5, 410); // 201030 d'après 180204
+       context.restore(); 
+      }
+      //marquer(canvas, marque);
+      
+      function dessinerTouche (posXInit, posYInit, largeurTouche, longueurTouche, posYTouche, bezier, couleurFondTouche, couleurTourTouche){
+        context.beginPath();
+        context.moveTo(posXInit+ bezier,posYInit+posYTouche); // 200926: 1. cf. bloc notes 200928
+        context.lineTo(posXInit+longueurTouche, posYInit + posYTouche); // 2. 200927: vers coin NE
+        context.lineTo(posXInit+ longueurTouche, posYInit+ largeurTouche + posYTouche ); // 3. vers coin SE
+
+        context.lineTo(posXInit + bezier, posYInit + largeurTouche + posYTouche); // 4. ligne sud vers SO
+        
+        context.quadraticCurveTo(posXInit, posYInit + largeurTouche + posYTouche, posXInit, posYInit + largeurTouche - bezier + posYTouche); // 5. coin sud-ouest
+        
+        context.lineTo(posXInit, posYInit + bezier + posYTouche); // 6. ligne ouest
+        
+        context.quadraticCurveTo(posXInit, posYInit + posYTouche, posXInit + bezier, posYInit+ posYTouche); // 7. coin nord-ouest.
+        
+        context.closePath();
+        context.stroke();
+        
+        context.fillStyle = couleurFondTouche;
+        context.fill();
+      }
+      
+      var posXTouchesNoires = margeOuest + longueurTouchesBlanches - longueurTouchesNoires; // 201009
+      
+      //document.getElementById("positions").innerHTML = 'PosX Touches N.: ' + largeurTouchesNoires;
+      
+      var posYInitTouchesNoires = margeNord + largeurTouchesBlanches - Math.ceil((2*largeurTouchesNoires)/3);
+      
+      var posTouchesNoires = []; //  201011
+      var proport_posTN = [2/3, 1/3, 3/4, 1/2, 1/4]; //  201011 
+      function positionnerYTouchesNoires(){ //  dern.  modif.:  201011 
+        for (var i = 0; i < nbreTouchesNoires; i++){
+          posTouchesNoires[i] = Math.floor(posTouchesBlanches[i + 2 * Math.floor(i/5) + (i%5>=2)] + largeurTouchesBlanches - proport_posTN[i%5]*largeurTouchesNoires);
+        } 
+      } 
+       
+      positionnerYTouchesNoires();
+      
+      var posToutesTouches = [];
+      var posToutesTouches_c = [];
+      posToutesTouches_c = posTouchesBlanches.concat(posTouchesNoires);
+      posToutesTouches = posToutesTouches_c.sort(function(a,b){return a - b});
+      
+      var correcPosTB = [0, 0, 1/3, 0, 2/3, 0, 0, 1/4, 0, 1/2, 0, 3/4 ];
+      var posYToutesTouchesHaut = [];
+      
+      for (var i = 0; i< nbreToutesTouches ; i++){
+        posYToutesTouchesHaut[i] = posToutesTouches[i] + Math.floor( correcPosTB[i%12]*largeurTouchesNoires);
+      }// for nttesTouches.
+      
+      //document.getElementById("dern_message").innerHTML = 'positions  TT:  ' + posYToutesTouchesHaut;
+      
+      function dessinerTouchesNoires(posYTN, couleurFondTouche){
+        dessinerTouche(posXTouchesNoires, 0, largeurTouchesNoires, longueurTouchesNoires, posYTN, 4, couleurFondTouche, 'black'); // 201009
+      }
+      
+      window.addEventListener('load', dessinerInitial, false);
+      
+      function dessinerInitial(evt){
+       marquer(canvas, marque);
+        //200928: dessin touches blanches
+        for(var i =0; i<nbreTouchesBlanches; i++){
+        
+          dessinerTouche(margeOuest, margeNord, largeurTouchesBlanches, longueurTouchesBlanches,i*largeurTouchesBlanches,4, 'white', 'black');
+          }// fin for dessiner touches blanches.
+        for(var j =0; j<nbreTouchesNoires; j++){       
+          dessinerTouchesNoires(posTouchesNoires[j], 'black');
+        } // for j touches noires
+         
+        //marquer(canvas, marque); // 201030 d’après 180204       
+      }// 200930: fin dessinerInitial
+
+      function calculerNoTouchesBlanches(Ydgt){
+        var b = Math.floor((Ydgt - margeNord)/largeurTouchesBlanches);
+        return b;
+      }
+
+      function calculerNoTtesTouches(Xdgt,Ydgt){
+        var b = calculerNoTouchesBlanches(Ydgt);
+        
+        var kb = 2*b - 1*(b%7 >2) - 2*Math.floor(b/7);
+        
+        var k  = (Xdgt < posXTouchesNoires)*kb + (Xdgt >= posXTouchesNoires)*((Ydgt<posYToutesTouchesHaut[kb])*(kb - 1) + ((Ydgt>= posYToutesTouchesHaut[kb])*(Ydgt < posYToutesTouchesHaut[kb + 1]))*kb + (Ydgt >= posYToutesTouchesHaut[kb + 1])*(kb + 1) + (kb == nbreToutesTouches-1)*(nbreToutesTouches-1));
+        
+        return k;
+      }
+      
+      function calculerCouleurTouche(k){
+        var couleur = 
+        (k%12<5)*(k%2==0) + (k%12>=5)*(k%2==1);
+        return couleur;
+      }
+      
+      
+      function calculer_n_fn_k(k){
+        var r = (k%12<5)*(k-1)/2 + (k%12>=5)*(k-2)/2 - Math.floor(k/12);
+        return r;
+      }
+      
+      
+      var couleur_tab = [];
+      for(var c=0; c < nbreToutesTouches; c++){
+        couleur_tab[c] = calculerCouleurTouche(c);
+      }
+      
+      function calculer_b_fn_k(k){
+        var b = (k%12<5)*(k/2) + (k%12>=5)*((k+1)/2) + Math.floor(k/12);
+        return b;
+      }
+      
+      function debloquerToutesTouches(posDgtX, posDgtY){
+        if (posDgtX>posXTouchesNoires && posDgtY > posYToutesTouchesHaut[nbreToutesTouches - 1]){
+          for(var i; i< nbreToutesTouches; i++){
+            tabSons[i].pause();
+            tabSons[i].currentTime = 0;
+            zone[i] = false;
+          } // for i
+        } // if
+      } // function
+      
+      /*function corrigerBugDe3T(positions){
+        //positions.pop();
+        for(var i=0; i<3; i++){
+          positions.splice(0,3);
+        }
+        document.getElementById("test_05").innerHTML = 'message reçu 3s après';
+      }*/
+      
+      //var tb = calculerNoTouche(100,300);
+      //document.getElementById("test").innerHTML= 'no b dgt: '+ calculer_b_fn_k(5);
+ 
+      canvas.addEventListener('touchstart', toucher, false);
+      
+      canvas.addEventListener('touchend', lever, false);
+      
+      //canvas.addEventListener('touchcancel', debuguer3Touches, false);
+      
+      canvas.addEventListener('touchmove', rouler, false);
+      
+      function toucher (evt) { // 200919: autres fonctions événements : defiler, lever
+        
+        n = evt.targetTouches.length;
+        //afficherNbreTouches(n);
+        
+        positionner(evt, positionsTouches, n);
+        ;
+        // ElementById("test").innerHTML = 'no k dgt: '+ k;
+       for(var j=0; j<n; j++){
+          tab_k[j] = calculerNoTtesTouches(positionsTouches[j][0], positionsTouches[j][1]);
+          
+          //tabSons[tab_k[j]].currentTime = 0;
+          tabSons[tab_k[j]].play();
+          //zone [tab_k[j]] = true;
+        
+          if (couleur_tab[tab_k[j]] == 1){
+            var b = calculer_b_fn_k(tab_k[j]);
+            dessinerTouche(margeOuest, margeNord, largeurTouchesBlanches, longueurTouchesBlanches, b*largeurTouchesBlanches, 4, 'gray', 'black');
+            
+            if (couleur_tab[tab_k[j] - 1] == 0){
+              if (zone[tab_k[j] - 1]==false) dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j] - 1], 'black');
+              else dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j] - 1], 'DarkMagenta');
+            } // if j-1
+            if (couleur_tab[tab_k[j] + 1] == 0){
+              if (zone[tab_k[j] + 1]==false) dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j] + 1], 'black');
+              else dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j] + 1], 'DarkMagenta');
+            } // if j+1
+          } // if j couleur 1
+          
+          if (couleur_tab[tab_k[j]] == 0){
+            dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j]], 'DarkMagenta');
+          } // if j couleur 0
+          debloquerToutesTouches(positionsTouches[j][0], positionsTouches[j][1]);
+        } // for j dgts
+        //document.getElementById("test").innerHTML = 'zones: '+ zone;
+       // marquer(canvas, marque); // 201030 d’après 180204       
+      }// fn toucher
+
+      
+       
+      function lever (evt) {
+        
+       // document.getElementById("test").innerHTML = 'positions : '+ zone;
+       
+       // document.getElementById("test").innerHTML = 'zones début lever: '+ zone.indexOf(true);
+        
+        n = evt.targetTouches.length;
+        //afficherNbreTouches(n);
+      // dessinerInitial(evt);
+        //document.getElementById("test").innerHTML = 'zones: '+ zone;
+        
+        var positionsTouches= [];
+        positionner(evt, positionsTouches, n);
+        
+       // var tab_l = [];
+  
+        for(var k=0; k<nbreToutesTouches; k++){
+          zone[k] = false;
+          for(var j=0; j<n; j++){
+            tab_k[j] = calculerNoTtesTouches(positionsTouches[j][0], positionsTouches[j][1]);
+            zone[tab_k[j]] = true;
+          } // for j
+          
+          if(zone[k] == false){
+            tabSons[k].pause();
+            tabSons[k].currentTime = 0;
+            
+            if (couleur_tab[k] == 1){
+              var b = calculer_b_fn_k(k);
+              dessinerTouche(margeOuest, margeNord, largeurTouchesBlanches, longueurTouchesBlanches, b*largeurTouchesBlanches, 4, 'white', 'black');
+            
+              if (couleur_tab[k - 1] == 0){
+                if (zone[k - 1] ==false) dessinerTouchesNoires(posYToutesTouchesHaut[k - 1], 'black');
+                else dessinerTouchesNoires(posYToutesTouchesHaut[k - 1], 'DarkMagenta');
+              } // if k-1
+              
+              if (couleur_tab[k + 1] == 0){
+                if (zone[k + 1]==false) dessinerTouchesNoires(posYToutesTouchesHaut[k + 1], 'black');
+                else dessinerTouchesNoires(posYToutesTouchesHaut[k+ 1], 'DarkMagenta');
+              } // if k+1
+            } // if j couleur 1
+          
+          if (couleur_tab[k] == 0){
+            dessinerTouchesNoires(posYToutesTouchesHaut[k], 'black');
+          } // if k couleur 0
+          //zone [tab_e[j]] = false;
+        } // if zone
+          
+      }// for k
+        //document.getElementById("test_02").innerHTML = ' zones, fin lever: '+ zone.indexOf(true);
+       // if (zone.indexOf(true) == -1) dessinerInitial(evt);
+       //marquer(canvas, marque); // 201030 d’après 180204
+      } // function lever
+
+      function rouler(evt){ // 201027
+        
+        n = evt.targetTouches.length;
+        //afficherNbreTouches(n);
+        
+        positionner(evt, positionsTouches, n);
+        // ElementById("test").innerHTML = 'no k dgt: '+ k;
+       for(var j=0; j<n; j++){
+          tab_k[j] = calculerNoTtesTouches(positionsTouches[j][0], positionsTouches[j][1]);
+          
+          if (positionsTouches[j][0]<posXTouchesNoires){
+          
+            tabSons[tab_k[j]].play();
+          
+            if (couleur_tab[tab_k[j]] == 1){
+              var b = calculer_b_fn_k(tab_k[j]);
+              dessinerTouche(margeOuest, margeNord, largeurTouchesBlanches, longueurTouchesBlanches, b*largeurTouchesBlanches, 4, 'gray', 'black');
+            
+              if (couleur_tab[tab_k[j] - 1] == 0){
+                dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j] - 1], 'black');
+              } // if j-1
+              if (couleur_tab[tab_k[j] + 1] == 0){
+                if (zone[tab_k[j] + 1]==false) dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j] + 1], 'black');
+              } // if j+1
+            } // if j couleur 
+          } // if bas du clavier: 201029:OK
+          
+          if (positionsTouches[j][0] >= posXTouchesNoires){
+            if (couleur_tab[tab_k[j]] == 0){
+              tabSons[tab_k[j]].play();
+              dessinerTouchesNoires(posYToutesTouchesHaut[tab_k[j]], 'DarkMagenta');
+            } // if couleur_tab = 0 (touches noires)
+          } // if haut du clavier  
+        } // for j
+  
+      } // function rouler
+      
+     // marquer(canvas, marque); // 201030 d’après 180204
+    </script>
+  </body>
+</html>
