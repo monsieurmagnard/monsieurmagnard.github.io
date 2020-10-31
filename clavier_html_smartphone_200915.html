@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<body> <!--ontouchstart="showCoordinates(event)" ontouchmove="showCoordinates(event)">-->
+	<body ontouchstart="showCoordinates(event)" > <!--ontouchmove="showCoordinates(event)">-->
 
 		<h1>The TouchEvent's touches Property</h1>
 
@@ -13,39 +13,39 @@
 
 		<p><strong>Note:</strong> Touch events works for touch devices only.</p>
 
-		<canvas id="canvas" style="background-color:#f5f5f5">
+		<canvas id="canvas" width = "335" height= "300" style="background-color:#f5f5f5">
 			<p>Désolé, votre navigateur ne supporte pas Canvas.</p>
 		</canvas>
 
 		<script>
-			function positionnerPointeur(canvas, evt) {
+			//var canvas = document.getElementById('canvas');
+			//var context = canvas.getContext('2d');
+			
+			/*function positionnerPointeur(canvas, evt) {
 				var rect = canvas.getBoundingClientRect();
 				return {
 					x: evt.touches[0].clientX - rect.left,
 					y: evt.touches[0].clientY - rect.top
 				};
-			}
+			}*/
 
-			var canvas = document.getElementById('canvas');
-			var context = canvas.getContext('2d');
-
-			canvas.addEventListener('ontouchstart', cliquerSur, false); 
+			/*canvas.addEventListener('ontouchstart', cliquerSur, false); 
 
 			function cliquerSur(evt){ // 200915 adaptation smartphone d'après 170801 Paris d'après 160531: modèle: mousemove
 				var positionPointeur = positionnerPointeur(canvas, evt);
 				//activerZone (positionPointeur.x, positionPointeur.y);
-				var message = 'Position du pointeur: ' + positionPointeur.x + ',' + positionPointeur.y ; /*+ ' zone0: ' + zone[0]*/ 
+				var message = positionPointeur.x + ',' + positionPointeur.y ; /*+ ' zone0: ' + zone[0]*/ 
 			//ecrireMessage(canvas, message); // réformé pour publication 180206
-			document.getElementById("demo").innerHTML = message;//x_0 + ", " + y_0 + " et " + x_1 + ", " + y_1;
-			}
-			
-			/*function showCoordinates(event) {
-				var x_0 = event.touches[0].clientX;
-				var y_0 = event.touches[0].clientY;
-				var x_1 = event.touches[1].clientX;
-				var y_1 = event.touches[1].clientY;
-				document.getElementById("demo").innerHTML = x_0 + ", " + y_0 + " et " + x_1 + ", " + y_1;
+			//document.getElementById("demo").innerHTML = message;//x_0 + ", " + y_0 + " et " + x_1 + ", " + y_1;
 			}*/
+			
+			function showCoordinates(event) {
+				var x = event.touches[0].clientX;
+				var y = event.touches[0].clientY;
+				//var x_1 = event.touches[1].clientX;
+				//var y_1 = event.touches[1].clientY;
+				document.getElementById("demo").innerHTML = x + ", " + y /*+ " et " + x_1 + ", " + y_1*/;
+			}
 		</script>
 
 	</body>
