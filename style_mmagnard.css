@@ -8,7 +8,7 @@ body
 
 #bloc_page
 {
-    width: 1300px;
+    width: 700px;
     margin: 20px;
 }
 
@@ -45,6 +45,11 @@ header h5
 	letter-spacing: 2px;
 	font-style: italic;
     font-weight: bold;
+}
+
+#apps-html
+{
+	margin-left: 50px;
 }
 
 /* Navigation */
@@ -86,4 +91,5 @@ nav a:hover
 p
 {
 	padding-left: 20px;
+	text-align: justify;
 } 
