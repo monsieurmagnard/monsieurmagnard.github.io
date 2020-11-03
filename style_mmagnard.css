@@ -9,7 +9,7 @@ body
 #bloc_page
 {
     width: 100%; /* différence 1 / v. large*/
-    margin: 20px;
+    margin: 15px;
 }
 
 /* Header */
@@ -29,7 +29,7 @@ header
     flex-direction: row; /* différence 4 / v. large*/
 }
 
-header h3
+header h2
 {
 	margin-top: 0px;
 	margin-left: 10px; /* différence 5 / v. large*/
@@ -40,7 +40,7 @@ header h5
 {
     /*font-family: Arial, serif;*/
     /*font-size: 1.1em;*/
-    margin-top: 8px; /* différence 6 / v. large*/
+    margin-top: 15px; /* différence 6 / v. large*/
 	margin-left: 35px;
 	color: #a4009f;
 	letter-spacing: 0.7px; /* différence 7 / v. large*/
@@ -85,7 +85,7 @@ nav a:hover
 
 p
 {
-	padding-left: 20px; /* différence 9 / v. large*/
-	margin-right: 10px;
+	padding-left: 10px; /* différence 9 / v. large*/
+	margin-right: 25px;
 	text-align: justify;
 } 
