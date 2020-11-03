@@ -29,7 +29,7 @@ header
     flex-direction: row; /* différence 4 / v. large*/
 }
 
-header h2
+header h3
 {
 	margin-top: 0px;
 	margin-left: 10px; /* différence 5 / v. large*/
@@ -40,7 +40,7 @@ header h5
 {
     /*font-family: Arial, serif;*/
     /*font-size: 1.1em;*/
-    margin-top: 15px; /* différence 6 / v. large*/
+    margin-top: 8px; /* différence 6 / v. large*/
 	margin-left: 35px;
 	color: #a4009f;
 	letter-spacing: 0.7px; /* différence 7 / v. large*/
@@ -86,6 +86,6 @@ nav a:hover
 p
 {
 	padding-left: 10px; /* différence 9 / v. large*/
-	padding-right: 3%;
+	padding-right: 10px;
 	text-align: justify;
 } 
