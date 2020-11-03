@@ -8,7 +8,7 @@ body
 
 #bloc_page
 {
-    width: 500px;
+    width: 500px; /* différence 1 / v. large*/
     margin: 20px;
 }
 
@@ -18,21 +18,21 @@ header
 {
     /*background: url('tp_final/tp_final/images/separateur.png') repeat-x bottom;*/
     display: flex;
-	flex-direction: column;
+	flex-direction: column;	/* différence 2 / v. large*/
     justify-content: space-between;
-    /*align-items: flex-end;*/
+    /*align-items: flex-end;*/ /* différence 3 / v. large*/
 }
 
 #titre_principal
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* différence 4 / v. large*/
 }
 
 header h3
 {
 	margin-top: 0px;
-	margin-left: 10px;
+	margin-left: 10px; /* différence 5 / v. large*/
 	letter-spacing: 3px;
 }
 
@@ -40,10 +40,10 @@ header h5
 {
     /*font-family: Arial, serif;*/
     /*font-size: 1.1em;*/
-    margin-top: 8px;
+    margin-top: 8px; /* différence 6 / v. large*/
 	margin-left: 35px;
 	color: #a4009f;
-	letter-spacing: 0.7px;
+	letter-spacing: 0.7px; /* différence 7 / v. large*/
 	font-style: italic;
     font-weight: bold;
 }
@@ -57,7 +57,7 @@ nav ul
 
 nav li
 {
-    margin-right: 30px;
+    margin-right: 30px; /* différence 8 / v. large*/
 }
 
 nav a
@@ -85,6 +85,7 @@ nav a:hover
 
 p
 {
-	padding-left: 20px;
+	padding-left: 20px; /* différence 9 / v. large*/
+	padding-right: 10px;
 	text-align: justify;
 } 
