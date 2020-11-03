@@ -1,0 +1,93 @@
+body
+{
+	background-color: rgba(255,243,273,0.2);
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+	padding-left: 25px;
+}
+
+#bloc_page
+{
+    width: 1100px;
+    margin: 20px;
+}
+
+/* Header */
+
+header
+{
+    /*background: url('tp_final/tp_final/images/separateur.png') repeat-x bottom;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#titre_principal
+{
+    display: flex;
+    flex-direction: column;
+}
+
+header h3
+{
+	margin-top: 0px;
+	margin-left: 20px;
+	letter-spacing: 3px;
+}
+
+header h5
+{
+    /*font-family: Arial, serif;*/
+    /*font-size: 1.1em;*/
+    margin-top: 0px;
+	margin-left: 20px;
+	color: #a4009f;
+	letter-spacing: 2px;
+	font-style: italic;
+    font-weight: bold;
+}
+
+/* Navigation */
+
+
+nav ul
+{
+    list-style-type: none;
+    display: flex;
+}
+
+nav li
+{
+    margin-right: 40px;
+}
+
+nav a
+{
+    font-size: 1.1em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color: #760001;
+    border-bottom: 3px solid #760001;
+}
+
+
+/*h3
+{
+	font-family: Calibri, sans-serif;
+	text-align: center;
+
+	letter-spacing: 3px;
+	
+}
+}*/
+
+p
+{
+	/*padding-left: 20px;*/
+	text-align: justify;
+} 
