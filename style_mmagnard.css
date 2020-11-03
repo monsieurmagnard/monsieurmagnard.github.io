@@ -86,6 +86,6 @@ nav a:hover
 p
 {
 	padding-left: 10px; /* différence 9 / v. large*/
-	margin-right: 3%;
+	padding-right: 3%;
 	text-align: justify;
 } 
