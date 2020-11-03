@@ -9,7 +9,7 @@ body
 #bloc_page
 {
     width: 100%; /* différence 1 / v. large*/
-    margin: 10px;
+    /*margin: 10px;*/
 }
 
 /* Header */
@@ -87,5 +87,5 @@ p
 {
 	padding-left: 10px; /* différence 9 / v. large*/
 	/*padding-right: 10px;*/
-	text-align: justify;
+	/*text-align: justify;*/
 } 
