@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html id = "top">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width"/>
+
+	<style>
+		body
+		{
+			background-color: rgba(255,243,273,0.3);
+			font-family: 'Trebuchet MS', Arial, sans-serif;
+			color: #181818;
+			/*padding-left: 25px;*/
+		}
+		
+		.flex-container_titres {
+			display: flex;
+			flex-wrap: nowrap;
+			background-color: AliceBlue;
+		}
+		#marque{
+			margin-left: 3%;
+			color:#845600;
+			letter-spacing: 3px;
+			font-style: italic;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+		
+		#sous-titre{
+			margin-top: 3%; 
+			margin-left: 5%;
+			margin-right: 10px;
+			
+			color: #a4009f;
+			letter-spacing: 0.7px; 
+			font-style: italic;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+
+	
+		.flex-container_menu {
+			display: flex;
+			flex-wrap: nowrap;
+			background-color: AliceBlue;
+		}
+		
+		.flex-container_menu>div {
+			background-color: #f1f1f1;
+			width: 24%;
+			margin: 0.5%;
+			text-align: center;
+			line-height: 200%; 
+			font-size: 0.9em;
+			color:Indigo;
+			/*padding-bottom: 3px;*/
+		}
+		.menu:link {
+      text-decoration: none;
+      color: Indigo;
+    }
+    
+    .menu:hover{
+      color: Azure;
+    }
+  
+		.flex-container_menu>div:hover {
+			background-color: CadetBlue;
+			color: Azure;
+			/*border-bottom: 3px solid #F0FFFF;*/
+		}
+		
+		h4
+		{
+			color:#845600;
+			text-decoration: underline;
+			font-style: italic;
+		}
+		
+		p
+		{
+			padding-left: 10px;
+		}
+		
+		.traits_separ
+		{
+			width: 90%;
+			margin: 5px;
+			line-height: 1px;
+			background-color: #845600;
+			color: rgba(255,243,273,0.3);
+		}
+		
+	.sous-titres
+  {
+    color:#845600;
+    text-decoration: underline;
+    padding-left: 3%;
+  }
+	</style>
+</head>
+<body>
+	<div class="flex-container_titres">
+		<h2 id = "marque" >monsieurmagnard</h2>
+		<h5 id = "sous-titre" >Utilitaires pour l'éducation musicale</h5>
+	</div>
+	
+	<div class="flex-container_menu">
+		<div><a href="#top" class= "menu">Accueil</a></div>
+		<div><a href="#applications_en_ligne" class= "menu">Applications en ligne</a></div>
+		<div><a href="contact_monsieurmagnard.html" class= "menu">Contacts</a></div>
+		<div><a href="#cours" class= "menu">Cours</a></div>
+	</div>
+	
+	<img src="Bandeau_01.png" alt="image_presentation" width="100%">
+	
+	<h4 id = "actualites_du_site">Actualités du site</h4>
+	<p>
+		<u>Samedi 31 octobre 2020:</u> Une deuxième application mise en ligne <u>spécifiquement pour smartphones et tablettes</u> android (je n'ai pas fait d'essais pour iphones)<br>
+		mais en théorie comme il s'agit d'internet (applications en ligne) et non d'applications natives android, cela devrait aussi fonctionner:) <br>
+		<a href = "piano_internet_smartphone_v_mm_1.html">piano pour jouer sur smartphones ou tablettes (pas sur PC)</a><br><br>
+				
+		<u>Jeudi 1er octobre 2020:</u> je suis retraité de l'éducation nationale en éducation musicale à partir d'aujourd'hui. Vous pouvez me contacter à mon adresse académique <br>
+		qui reste active: <a href="contact_monsieurmagnard.html">Contact.</a>
+		<br><br>
+			
+		<u>Mercredi 2 septembre 2020:</u> les applications Flash ne fonctionneront plus en ligne à partir de fin décembre 2020.<br>
+		Vous pouvez cependant vous rendre sur le site <a href = "https://bermaeditions.fr"> https://bermaeditions.fr </a> et <br>
+		télécharger le NappeurPartition (voir ci-dessous.)
+	</p>
+	<a href="#top">Retour en haut de page</a>
+	
+	<div class= "traits_separ">.</div>
+	
+	<h4 id = "applications_en_ligne">Applications en ligne:</h4>
+	
+		<h5 class = "sous-titres" id = "apps_html">applications html-javascript:</h5>
+  
+		<p>
+			Piano pour jouer: (fichier html pour PC ou Mac, chrome (excellent), IE 11, Edge, Firefox (en développement))<br>
+			<a href = "ClavierMaitre_1.html"> piano pour jouer sur PC (pas sur smartphones ou tablettes)</a> <br>
+			&#160;. version html pour smartphones et tablettes: <br>
+		
+			<a href = "piano_internet_smartphone_v_mm_1.html">piano pour jouer sur smartphones ou tablettes (pas sur PC)</a>
+		</p>
+		
+		<p>
+			Boîte à rythme: (fichier html, IE 11 (excellent), Edge, Chrome, Firefox(insuffisant))<br>
+			<a href = "Boite_A_Rythme_V1.html"> Boîte à Rythme</a> <br>
+		</p>
+		
+		<h5 class = "sous-titres" id = "apps_flash">applications Adobe Flash:</h5>
+		
+		<p>
+				(Jusqu'au 31 décembre 2020 seulement)<br><br>
+				Reconnaissance des notes en clé de sol: (Plug in Flash: cliquer sur l'icône "Flash Player" puis sur "Autoriser les contenus") <br>
+				<a href = "ReconnaissanceNotes.html"> reconnaissance des notes en clé de sol</a> <br>
+			
+			</p>
+		
+			<p>	
+				Reconnaissance des notes en clé de sol version Challenge: (Plug in Flash: même procédure que ci-dessus) <br>
+				<a href = "ReconnaissanceNotesChallenge.html"> reconnaissance des notes en clé de sol version Challenge</a> <br>
+			
+			</p>
+		
+			<p>
+				Piano d'affichage et portée: (Plug in Flash: même procédure que ci-dessus)<br>
+				<a href = "Piano d_affichage_et_Portee_1.html"> piano d'affichage et portée</a> <br>
+			
+			</p>
+		
+			<p>
+				Noms d'intervalles: (Plug in Flash: même procédure que ci-dessus)<br>
+				<a href = "Noms d'intervalles_1.html"> Noms d'intervalles</a> <br>
+			
+			</p>
+		
+			<p>
+				Mini Séquenceur 4 mesures: (Plug in Flash: même procédure que ci-dessus)<br>
+				<a href = "Mini_Sequenceurs/EnregistreurCroches.html"> Mini Séquenceur 4 mesures</a> <br>
+			
+			</p>
+		
+			<p>
+				Mini Séquenceur 4 mesures avec Nappes et Portée écriture piano: (Plug in Flash: même procédure que ci-dessus)<br>
+				<a href = "Mini_Sequenceurs/NappeurPartitionChromatique.html"> Mini Séquenceur 4 mesures avec Nappes et Portée écriture piano</a> <br>
+				&#160; démonstration sur YouTube suivre le lien suivant: &nbsp <a href = "https://youtube.com/watch?v=dcV8DJCGXm4">Demo nappeur partition</a><br>
+				Egalement disponible en <U>téléchargement</U> à l'adresse suivante:<br>
+				<a href = "https://bermaeditions.fr"> https://bermaeditions.fr </a>
+			</p>
+			<a href="#top">Retour en haut de page</a>
+			<div class= "traits_separ">.</div>
+			
+			<h4 id="cours" style="color:#845600">
+				<U><I>Cours à distance mars juin 2020 "coronavirus":</I></U>
+			</h4>
+		
+			<p>
+				Lecteur partition-clavier (différentes animations): (fichiers html)<br>
+				<a href = "Animations_partition_clavier/Air_mystere_1/Air_mystere_1.html"> Lecture partition/clavier de l'air mystère n°1 (mai 2020)</a> <br>
+				<a href = "Animations_partition_clavier/Animation_gamme_harmonisée_3ces/Gamme_DoM_harmonisee_3ces.html"> Lecture partition/clavier de la gamme harmonisée en tierces (18 mai 2020)</a> <br>
+				<a href = "Animations_partition_clavier/Animation_gamme_harmo_Acc_3_sons_fonda/Gamme_DoM_harmonisee_Acc_3_sons_fonda.html"> Lecture partition/clavier de la gamme harmonisée en accords à 3 sons dans leur état fondamental (strict) (3 juin 2020)</a> <br>
+			</p>
+
+	<p><a href="#top">Retour en haut de page</a></p>
+</body>
+</html>
